@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRouingProviders } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 
+// Servicios
+import { peticionesPokeApi } from './Services/PokeApi';
+
 // Componentes
 import { AppComponent } from './app.component';
 import { PokedexComponent } from './Components/pokedex/pokedex.component';
@@ -19,7 +22,8 @@ import { PokedexComponent } from './Components/pokedex/pokedex.component';
     routing
   ],
   providers: [
-    appRouingProviders
+    appRouingProviders,
+    peticionesPokeApi
   ],
   bootstrap: [AppComponent]
 })
