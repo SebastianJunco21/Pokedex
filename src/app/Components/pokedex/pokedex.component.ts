@@ -8,34 +8,55 @@ import { peticionesPokeApi } from '../../Services/PokeApi';
 })
 export class PokedexComponent implements OnInit {
 
-  private resulList: any;
-  public pokemonIndivi: string;
+  //#region Variables ListName()
+    private resultListName: any;
+    public resNamePokemon: Array<any>;
+  //#endregion 
+
+  //#region Variables ListImage()
+    private resultListData: any;
+    public resDataPokemon: Array<any>
+  //#endregion
 
   constructor(public _peticionesPokeApi: peticionesPokeApi) {
-    this.pokemonIndivi = "";
+    //#region Inicializacion variables ListName()
+      this.resNamePokemon = [];
+    //#endregion
+
+    //#region Inicializacion variables PropertiesPokemon()
+      this.resDataPokemon = [];
+    //#endregion
+
   }
 
   ngOnInit(): void {
-    this.listaPokemon();
+    this.ListName();
+    this.PropertiesPokemon();
   }
 
-  listaPokemon(){
+  ListName(){
     this._peticionesPokeApi.getListPokemon().subscribe(
       res => {
-        this.resulList = res;
-        const resPokemon = this.resulList.results;
-        const longArray = this.resulList.results.length;
-        for(let i = 0; i < longArray; i++){
-          this.pokemonIndivi += resPokemon[i].name;
-          // console.log(resPokemon[i].name);
-        }
-
-        console.log(resPokemon);
+        this.resultListName = res;
+        this.resNamePokemon = this.resultListName.results;
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  PropertiesPokemon(){
+    console.log(this._peticionesPokeApi.getDataPokemon());
+    // this._peticionesPokeApi.getDataPokemon().subscribe(
+    //   res => {
+    //     this.resultListData = res;
+    //     console.log(this.resultListData);
+    //   },
+    //   error => {
+
+    //   }
+    // );
   }
 
 }

@@ -2,7 +2,12 @@
 
 <div class="ListPokemon">
     <ul>
-        <li>{{ pokemonIndivi }}</li>
+        <li *ngFor="let itemName of resNamePokemon">
+            {{ itemName.name }}
+        </li>
+        <!-- <li *ngFor="let itemImg of ">
+
+        </li> -->
     </ul>
 
 </div>
